@@ -1,3 +1,6 @@
+#by zengwenjian123
+
+
 import cv2
 import glob
 import cv2.aruco as aruco
@@ -6,6 +9,7 @@ import cv2.aruco as aruco
 frame_name=glob.glob('./pic/*.jpg')#搜索目录下所有的jpg图片
 for fname in frame_name:
     img=cv2.imread(fname)
+    img1=img
     img=cv2.resize(img,None,fx=1,fy=1,interpolation=cv2.INTER_CUBIC)
     #灰度化
     img=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
@@ -24,15 +28,15 @@ for fname in frame_name:
         print(ids[i])
         # 将detectMarkers函数返回的标记轮廓[0][0]点numpy数组转换为int
         print(int(corners[i][0][0].tolist()[0]), int(corners[i][0][0].tolist()[1]))
-        cv2.circle(img, (int(corners[i][0][0].tolist()[0]), int(corners[i][0][0].tolist()[1])), 5, (0, 0, 255), -1)
-        cv2.putText(img, str(ids[i]), (int(corners[i][0][0].tolist()[0]), int(corners[i][0][0].tolist()[1])),
+        cv2.circle(img1, (int(corners[i][0][0].tolist()[0]), int(corners[i][0][0].tolist()[1])), 5, (0, 0, 255), -1)
+        cv2.putText(img1, str(ids[i]), (int(corners[i][0][0].tolist()[0]), int(corners[i][0][0].tolist()[1])),
                     cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2, cv2.LINE_AA)
     # 画出标志位置
-    aruco.drawDetectedMarkers(img, corners, ids)
+    aruco.drawDetectedMarkers(img1, corners, ids)
 
 
 
 
 
-    cv2.imshow('frame',img)
+    cv2.imshow('frame',img1)
     cv2.waitKey(1200)
