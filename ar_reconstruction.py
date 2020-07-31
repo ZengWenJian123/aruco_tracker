@@ -1,5 +1,8 @@
 #by zengwenjian123
+'''
+利用ar标签估算相机位置
 
+'''
 
 import cv2
 import glob
