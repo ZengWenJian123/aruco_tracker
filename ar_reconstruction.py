@@ -31,7 +31,13 @@ for fname in frame_name:
         print(ids[i])
         # 将detectMarkers函数返回的标记轮廓[0][0]点numpy数组转换为int
         print(int(corners[i][0][0].tolist()[0]), int(corners[i][0][0].tolist()[1]))
+        #print(corners)
         cv2.circle(img1, (int(corners[i][0][0].tolist()[0]), int(corners[i][0][0].tolist()[1])), 5, (0, 0, 255), -1)
+        #print(int(corners[i][0][0].tolist()[0]), int(corners[i][0][0].tolist()[1]),int(corners[i][0][1].tolist()[0]), int(corners[i][0][1].tolist()[1]))
+        marker_x=int(corners[i][0][0].tolist()[0]), int(corners[i][0][0].tolist()[1])
+        marker_y=int(corners[i][0][1].tolist()[0]), int(corners[i][0][1].tolist()[1])
+        marker_z=int(corners[i][0][2].tolist()[0]), int(corners[i][0][2].tolist()[1])
+        print(marker_x,marker_y,marker_z)
         cv2.putText(img1, str(ids[i]), (int(corners[i][0][0].tolist()[0]), int(corners[i][0][0].tolist()[1])),
                     cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2, cv2.LINE_AA)
     # 画出标志位置
