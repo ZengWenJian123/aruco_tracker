@@ -17,6 +17,13 @@ cv_file.release()
 #  [  0.,         476.72971528 ,210.92028],
 #  [  0.,           0.,           1.        ]])
 
+# dist=np.array(([[-0.58650416 , 0.59103816, -0.00443272 , 0.00357844 ,-0.27203275]]))
+# newcameramtx=np.array([[189.076828   ,  0.    ,     361.20126638]
+#  ,[  0 ,2.01627296e+04 ,4.52759577e+02]
+#  ,[0, 0, 1]])
+# mtx=np.array([[398.12724231  , 0.      ,   304.35638757],
+#  [  0.       ,  345.38259888, 282.49861858],
+#  [  0.,           0.,           1.        ]])
 
 
 
@@ -81,13 +88,13 @@ while True:
         cv2.putText(frame, "Id: " + str(ids), (0,64), font, 1, (0,255,0),2,cv2.LINE_AA)
         ###### 角度估计 #####
         #print(rvec)
-        R ,_= cv2.Rodrigues(rvec)
-        cameraPose=-R.T* tvec[0]
-        print(cameraPose)
+
+
         ###### 距离估计 #####
         distance = ((tvec[0][0][2] + 0.02) * 0.0254) * 100  # 单位是米
-
-
+        R=cv2.Rodrigues(rvec)
+        #print(R)
+        #print(R.I*tvec)
         # 显示距离
         cv2.putText(frame, 'distance:' + str(round(distance, 4)) + str('m'), (0, 110), font, 1, (0, 255, 0), 2,
                     cv2.LINE_AA)

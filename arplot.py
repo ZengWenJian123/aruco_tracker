@@ -5,7 +5,9 @@ import matplotlib
 fig=plt.figure()
 ax=fig.gca(projection='3d')
 #设置字体和字号中文
-
+matplotlib.rcParams['font.family'] = ['sans-serif']
+matplotlib.rcParams['font.sans-serif'] = ['SimHei']
+matplotlib.rcParams['font.size'] = 10
 
 # 绘制二维码
 qr_x = np.arange(-0.044, 0.044, 0.01)
